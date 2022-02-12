@@ -1,22 +1,26 @@
 const board = document.querySelector('.board')
+const inputField = document.querySelector('.input')
+const createGridButton = document.querySelector('.create-grid-button')
 
 const boardWidth = 800
 let inputValue
 
 const initBoard = (gridCount = 16) => {
-  const elementWidth = boardWidth / gridCount + 'px'
+  const elementWidth = Math.round((boardWidth / gridCount) * 1000) / 1000
+
   for (let i = 0; i < gridCount; i++) {
     const row = document.createElement('div')
     row.classList.add('row-' + i)
     row.style.width = boardWidth + 'px'
-    row.style.height = elementWidth
+    row.style.height = elementWidth + 'px'
+    row.style.display = 'flex'
+
     board.appendChild(row)
     for (let j = 0; j < gridCount; j++) {
       const rowElement = document.createElement('div')
       rowElement.classList.add('clickElement', 'row-' + i + '-element-' + j)
-      rowElement.style.width = elementWidth
-      rowElement.style.height = elementWidth
-      rowElement.style.display = 'inline-block'
+      rowElement.style.width = elementWidth + 'px'
+      rowElement.style.height = elementWidth + 'px'
       row.appendChild(rowElement)
     }
   }
@@ -36,7 +40,7 @@ const addClickListeners = () => {
   })
 }
 
-const resetBoard = () => {
+const resetBoardColor = () => {
   const allElements = getAllBoardElements()
 
   allElements.forEach((button) => {
@@ -59,19 +63,16 @@ const updateInputFieldBackground = () => {
 }
 
 const updateGridButton = () => {
-  const createGridButton = document.querySelector('.create-grid-button')
-
   if (inputValue === '') {
     createGridButton.innerHTML = 'Create Grid'
-  } else if (inputValue >= 0 && inputValue <= 100) {
+  } else if (inputValue > 0 && inputValue <= 100) {
     createGridButton.innerHTML = inputValue + ' x ' + inputValue
   } else {
     createGridButton.innerHTML = 'Create Grid'
   }
 }
 
-const addEventListenerToInput = () => {
-  const inputField = document.querySelector('.input')
+const onInputChange = () => {
   inputField.addEventListener('input', (e) => {
     updateInputValue(e.target.value)
     updateGridButton()
@@ -79,6 +80,28 @@ const addEventListenerToInput = () => {
   })
 }
 
-addEventListenerToInput()
+const resetBoard = () => {
+  board.innerHTML = ''
+}
+
+const handleCreateGridClick = () => {
+  if (inputValue >= 0 && inputValue <= 100) {
+    resetBoard()
+  }
+}
+
+const createGrid = () => {
+  if (inputValue > 0 && inputValue <= 100) {
+    resetBoard()
+    initBoard(inputValue)
+    addClickListeners()
+    inputField.value = ''
+    createGridButton.innerHTML = 'Create Grid'
+  } else {
+    resetBoardColor()
+  }
+}
+
+onInputChange()
 initBoard()
 addClickListeners()

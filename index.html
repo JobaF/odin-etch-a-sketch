@@ -11,12 +11,16 @@
     <div class="header">Etch-a-sketch</div>
     <div class="content">
       <div class="menu">
-        <button class="menu-button" onclick="resetBoard()">Reset</button>
+        <button class="menu-button" onclick="resetBoardColor()">
+          Reset Board
+        </button>
         <div class="input-element">
           <span class="input-text">X x X</span>
-          <input class="input" onchange="() => console.log(e)" />
+          <input class="input" />
         </div>
-        <button class="menu-button create-grid-button">Create Grid</button>
+        <button class="menu-button create-grid-button" onclick="createGrid()">
+          Create Grid
+        </button>
       </div>
 
       <div class="board"></div>
