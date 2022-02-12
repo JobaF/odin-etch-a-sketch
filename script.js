@@ -1,6 +1,5 @@
 const board = document.querySelector('.board')
 
-board.style.backgroundColor = 'blue'
 const boardWidth = board.getBoundingClientRect().width
 
 const initBoard = (gridCount = 16) => {
