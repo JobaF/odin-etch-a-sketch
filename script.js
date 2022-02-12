@@ -45,20 +45,26 @@ const resetBoard = () => {
 }
 
 const updateValue = (val) => {
-  console.log(val)
+  inputValue = val
 }
 const addEventListenerToInput = () => {
   const inputField = document.querySelector('.input')
+  const createGridButton = document.querySelector('.create-grid-button')
   inputField.addEventListener('input', (e) => {
-    inputValue = e.target.value
-    if (
-      parseInt(inputValue) >= 100 ||
-      parseInt(inputValue) <= 0 ||
-      isNaN(inputValue)
+    console.log(e.target.value)
+    if (e.target.value == '') {
+      createGridButton.innerHTML = 'Create Grid'
+      inputField.style.backgroundColor = 'rgb(160, 159, 159)'
+    } else if (
+      parseInt(e.target.value) <= 100 &&
+      parseInt(e.target.value) >= 0
     ) {
-      inputField.style.backgroundColor = 'red'
+      inputValue = e.target.value
+      createGridButton.innerHTML = inputValue + ' x ' + inputValue
+      inputField.style.backgroundColor = 'rgb(160, 159, 159)'
     } else {
-      inputField.style.backgroundColor = 'white'
+      createGridButton.innerHTML = 'Create Grid'
+      inputField.style.backgroundColor = 'red'
     }
   })
 }
