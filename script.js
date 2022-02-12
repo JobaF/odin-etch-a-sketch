@@ -1,6 +1,7 @@
 const board = document.querySelector('.board')
 
 const boardWidth = 800
+let inputValue
 
 const initBoard = (gridCount = 16) => {
   const elementWidth = boardWidth / gridCount + 'px'
@@ -43,5 +44,25 @@ const resetBoard = () => {
   })
 }
 
+const updateValue = (val) => {
+  console.log(val)
+}
+const addEventListenerToInput = () => {
+  const inputField = document.querySelector('.input')
+  inputField.addEventListener('input', (e) => {
+    inputValue = e.target.value
+    if (
+      parseInt(inputValue) >= 100 ||
+      parseInt(inputValue) <= 0 ||
+      isNaN(inputValue)
+    ) {
+      inputField.style.backgroundColor = 'red'
+    } else {
+      inputField.style.backgroundColor = 'white'
+    }
+  })
+}
+
+addEventListenerToInput()
 initBoard()
 addClickListeners()

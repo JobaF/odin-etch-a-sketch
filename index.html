@@ -11,12 +11,14 @@
     <div class="header">Etch-a-sketch</div>
     <div class="content">
       <div class="menu">
-        <button class="reset-button" onclick="resetBoard()">Reset</button>
+        <button class="menu-button" onclick="resetBoard()">Reset</button>
         <div class="input-element">
-          <span class="input-text">Grid count:</span>
-          <input class="input" />
+          <span class="input-text">X x X</span>
+          <input class="input" onchange="() => console.log(e)" />
         </div>
+        <button class="menu-button">Create Grid</button>
       </div>
+
       <div class="board"></div>
     </div>
   </body>
