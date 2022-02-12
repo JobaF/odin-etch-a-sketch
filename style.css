@@ -15,12 +15,9 @@ body {
   font-size: 44px;
   padding: 50px 0;
 }
-.reset {
-  min-height: 5vh;
-}
 
 .reset-button {
-  width: 100px;
+  width: 80%;
   height: 35px;
   font-size: 25px;
   padding: 0px;
@@ -32,4 +29,21 @@ body {
 .reset-button:hover {
   background-color: black;
   color: white;
+}
+
+.content {
+  display: flex;
+  height: 80vh;
+  width: 100vw;
+  justify-content: center;
+  gap: 5%;
+}
+
+.menu {
+  width: 200px;
+  height: 800px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
