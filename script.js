@@ -2,8 +2,6 @@ const board = document.querySelector('.board')
 
 const boardWidth = 800
 
-const addResetButton = () => {}
-
 const initBoard = (gridCount = 16) => {
   const elementWidth = boardWidth / gridCount + 'px'
   for (let i = 0; i < gridCount; i++) {
