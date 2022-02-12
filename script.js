@@ -1,6 +1,7 @@
 const board = document.querySelector('.board')
 const inputField = document.querySelector('.input')
 const createGridButton = document.querySelector('.create-grid-button')
+const colorModeButton = document.querySelector('.color-mode-button')
 
 const boardWidth = 800
 let inputValue
@@ -109,6 +110,20 @@ const createGrid = () => {
     handleMouseHover()
     inputField.value = ''
     createGridButton.innerHTML = 'Create Grid'
+  }
+}
+
+const changeColorMode = () => {
+  if (activeColorMode === colorModes[0]) {
+    activeColorMode = colorModes[1]
+    colorModeButton.style.background =
+      'linear-gradient(90deg, Red, Orange, Yellow, Green, Blue, Indigo,violet)'
+    colorModeButton.innerHTML = 'Random Color'
+  } else if (activeColorMode === colorModes[1]) {
+    activeColorMode = colorModes[0]
+    colorModeButton.style.background = ''
+    colorModeButton.style.backgroundColor = 'rgb(160, 159, 159)'
+    colorModeButton.innerHTML = 'Black Color'
   }
 }
 
