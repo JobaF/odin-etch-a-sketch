@@ -23,13 +23,25 @@ const initBoard = (gridCount = 16) => {
   }
 }
 
-const addClickListeners = () => {
-  const allButtons = document.querySelectorAll('.clickElement')
+const getAllBoardElements = () => {
+  return document.querySelectorAll('.clickElement')
+}
 
-  allButtons.forEach((button) => {
+const addClickListeners = () => {
+  const allElements = getAllBoardElements()
+
+  allElements.forEach((button) => {
     button.addEventListener('mouseover', () => {
       button.style.backgroundColor = 'black'
     })
+  })
+}
+
+const resetBoard = () => {
+  const allElements = getAllBoardElements()
+
+  allElements.forEach((button) => {
+    button.style.backgroundColor = 'white'
   })
 }
 
