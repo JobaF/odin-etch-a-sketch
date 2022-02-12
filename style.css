@@ -1,0 +1,9 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  width: 500px;
+  height: 500px;
+}
