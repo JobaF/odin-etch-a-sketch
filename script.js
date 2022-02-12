@@ -44,28 +44,38 @@ const resetBoard = () => {
   })
 }
 
-const updateValue = (val) => {
-  inputValue = val
+const updateInputValue = (value) => {
+  if (!isNaN(value)) {
+    inputValue = value
+  } else inputValue = ''
 }
+
+const updateInputFieldBackground = () => {
+  const inputField = document.querySelector('.input')
+
+  if (inputValue > 100) {
+    inputField.style.backgroundColor = 'red'
+  } else inputField.style.backgroundColor = 'rgb(160, 159, 159)'
+}
+
+const updateGridButton = () => {
+  const createGridButton = document.querySelector('.create-grid-button')
+
+  if (inputValue === '') {
+    createGridButton.innerHTML = 'Create Grid'
+  } else if (inputValue >= 0 && inputValue <= 100) {
+    createGridButton.innerHTML = inputValue + ' x ' + inputValue
+  } else {
+    createGridButton.innerHTML = 'Create Grid'
+  }
+}
+
 const addEventListenerToInput = () => {
   const inputField = document.querySelector('.input')
-  const createGridButton = document.querySelector('.create-grid-button')
   inputField.addEventListener('input', (e) => {
-    console.log(e.target.value)
-    if (e.target.value == '') {
-      createGridButton.innerHTML = 'Create Grid'
-      inputField.style.backgroundColor = 'rgb(160, 159, 159)'
-    } else if (
-      parseInt(e.target.value) <= 100 &&
-      parseInt(e.target.value) >= 0
-    ) {
-      inputValue = e.target.value
-      createGridButton.innerHTML = inputValue + ' x ' + inputValue
-      inputField.style.backgroundColor = 'rgb(160, 159, 159)'
-    } else {
-      createGridButton.innerHTML = 'Create Grid'
-      inputField.style.backgroundColor = 'red'
-    }
+    updateInputValue(e.target.value)
+    updateGridButton()
+    updateInputFieldBackground()
   })
 }
 
