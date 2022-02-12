@@ -7,11 +7,29 @@ body {
 }
 
 .board {
-  width: 750px;
-  height: 750px;
-  border: 1px black solid;
+  width: 800px;
+  height: 800px;
+  border: 2px black solid;
 }
 .header {
   font-size: 44px;
   padding: 50px 0;
+}
+.reset {
+  min-height: 10vh;
+}
+
+.reset-button {
+  width: 100px;
+  height: 35px;
+  font-size: 25px;
+  padding: 0px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.reset-button:hover {
+  background-color: black;
+  color: white;
 }
