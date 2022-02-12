@@ -4,6 +4,8 @@ const createGridButton = document.querySelector('.create-grid-button')
 
 const boardWidth = 800
 let inputValue
+const colorModes = ['black', 'randomRGB']
+let activeColorMode = colorModes[1]
 
 const initBoard = (gridCount = 16) => {
   const elementWidth = Math.round((boardWidth / gridCount) * 1000) / 1000
@@ -30,12 +32,22 @@ const getAllBoardElements = () => {
   return document.querySelectorAll('.clickElement')
 }
 
-const addClickListeners = () => {
+const handleMouseHover = () => {
   const allElements = getAllBoardElements()
 
-  allElements.forEach((button) => {
-    button.addEventListener('mouseover', () => {
-      button.style.backgroundColor = 'black'
+  allElements.forEach((divElement) => {
+    divElement.addEventListener('mouseover', () => {
+      if (activeColorMode === colorModes[0]) {
+        divElement.style.backgroundColor = 'black'
+      } else if (activeColorMode === colorModes[1]) {
+        const random = [
+          Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255),
+        ]
+        const colorString = `rgb(${random[0]},${random[1]},${random[2]})`
+        divElement.style.backgroundColor = colorString
+      }
     })
   })
 }
@@ -94,14 +106,12 @@ const createGrid = () => {
   if (inputValue > 0 && inputValue <= 100) {
     resetBoard()
     initBoard(inputValue)
-    addClickListeners()
+    handleMouseHover()
     inputField.value = ''
     createGridButton.innerHTML = 'Create Grid'
-  } else {
-    resetBoardColor()
   }
 }
 
 onInputChange()
 initBoard()
-addClickListeners()
+handleMouseHover()
