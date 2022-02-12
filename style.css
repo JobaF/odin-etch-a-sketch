@@ -39,14 +39,14 @@ body {
 }
 
 .menu {
-  width: 200px;
+  width: 300px;
   height: 800px;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
   background-color: white;
 }
 

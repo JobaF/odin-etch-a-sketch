@@ -5,7 +5,7 @@ const createGridButton = document.querySelector('.create-grid-button')
 const boardWidth = 800
 let inputValue
 const colorModes = ['black', 'randomRGB']
-let activeColorMode = colorModes[1]
+let activeColorMode = colorModes[0]
 
 const initBoard = (gridCount = 16) => {
   const elementWidth = Math.round((boardWidth / gridCount) * 1000) / 1000
